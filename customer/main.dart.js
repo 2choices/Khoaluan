@@ -33218,7 +33218,7 @@ var $async$aPT=A.v(function(a,b){if(a===1)return A.q(b,r)
 for(;;)switch(s){case 0:if($.a3==null)A.awk()
 $.a3.toString
 s=2
-return A.m(A.au8("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp0cmhteG1senR1YWdubGhiZ3pyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1MDU5ODMsImV4cCI6MjA5MTA4MTk4M30.BE5TE3EM31cjM3JMms788RjHvLCFvwuvx5-45SLwbYw","https://jtrhmxmlztuagnlhbgzr.supabase.co"),$async$aPT)
+return A.m(A.au8("sb_publishable_iXVayelMAV8VbA3Xh-YZYg_DcrYGluQ","https://supabase.co"),$async$aPT)
 case 2:if($.a3==null)A.awk()
 q=$.a3
 q.toString

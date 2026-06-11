@@ -1,0 +1,22 @@
+name: omnigo_auth
+description: "OMNIGO Auth - Supabase authentication module"
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ^3.11.3
+  flutter: ">=1.17.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  supabase_flutter: ^2.9.0
+  core:
+    path: ../core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

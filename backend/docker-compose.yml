@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # ---- NestJS Core API ----
+  core-api:
+    build:
+      context: ./core-api
+      dockerfile: Dockerfile
+    container_name: omnigo-core-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../.env
+    depends_on:
+      - redis
+    networks:
+      - omnigo-network
+
+  # ---- Python AI Service ----
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: omnigo-ai-service
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    networks:
+      - omnigo-network
+
+  # ---- Redis (local dev only, production uses Redis Cloud) ----
+  redis:
+    image: redis:7-alpine
+    container_name: omnigo-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - omnigo-network
+
+  # ---- Nginx Reverse Proxy ----
+  nginx:
+    image: nginx:alpine
+    container_name: omnigo-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - core-api
+      - ai-service
+    networks:
+      - omnigo-network
+
+networks:
+  omnigo-network:
+    driver: bridge
+
+volumes:
+  redis-data:

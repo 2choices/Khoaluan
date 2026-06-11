@@ -1,0 +1,26 @@
+name: omnigo_workspace
+description: OMNIGO - Smart multi-platform retail management ecosystem
+publish_to: none
+
+environment:
+  sdk: ^3.11.0
+
+workspace:
+  - apps/pos
+  - apps/admin
+  - apps/customer
+  - packages/core
+  - packages/ui_kit
+  - packages/api_client
+  - packages/omnigo_auth
+  - packages/omnigo_payment
+  - packages/omnigo_media
+  - packages/omnigo_offline
+  - packages/omnigo_notification
+  - packages/omnigo_print
+  - packages/omnigo_shipping
+  - packages/omnigo_ai
+
+dev_dependencies:
+  melos: ^7.5.0
+

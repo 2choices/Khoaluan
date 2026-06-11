@@ -1,0 +1,58 @@
+name: omnigo
+repository: https://github.com/omnigo/omnigo
+
+packages:
+  - apps/*
+  - packages/*
+
+ide:
+  intellij:
+    enabled: false
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+  version:
+    branch: main
+
+scripts:
+  analyze:
+    description: Run static analysis
+    run: dart analyze --fatal-infos .
+    exec:
+      concurrency: 1
+
+  format:
+    description: Format all Dart files
+    run: dart format .
+
+  test:
+    description: Run all tests
+    run: flutter test
+    exec:
+      concurrency: 1
+    packageFilters:
+      dirExists: test
+
+  clean:
+    description: Clean all packages
+    run: flutter clean
+    exec:
+      concurrency: 3
+
+  build:runner:
+    description: Run build_runner for code gen
+    run: dart run build_runner build --delete-conflicting-outputs
+    exec:
+      concurrency: 1
+    packageFilters:
+      dependsOn: build_runner
+
+  gen:l10n:
+    description: Generate localizations
+    run: flutter gen-l10n
+    exec:
+      concurrency: 1
+    packageFilters:
+      fileExists: l10n.yaml
